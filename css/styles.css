@@ -1,8 +1,19 @@
+
 #game-board {
   display: grid;
   grid-template-columns: repeat(2, 150px);
   grid-template-rows: repeat(2, 150px);
   gap: 10px;
+}
+
+#show-level {
+  display: flex;
+  justify-content: center;
+  font-family: 'Pokemon';
+  color: white;
+  font-size: 24px;
+  padding-top: 80px;
+  
 }
 
 .color {
@@ -80,7 +91,7 @@ body{
   justify-content: center;
   flex-direction: column;
   align-items: center ;
-  gap: 180px;
+  gap: 160px;
 }
 
 #title{
@@ -114,6 +125,8 @@ body{
 }
 
 #start{
+  width: 100%;
+  height: 100%;
   font-family: 'Pokemon';
   font-size: 20px;
   background-color: white;
@@ -135,9 +148,11 @@ body{
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   width: 50vhpx;
+
 }
 
 #start:hover {
+  
   background: #000000;
   background-image: -webkit-linear-gradient(top, #000000, #000000);
   background-image: -moz-linear-gradient(top, #000000, #000000);
