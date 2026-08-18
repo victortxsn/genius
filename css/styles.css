@@ -1,4 +1,8 @@
 
+#game-container{
+  align-content: center;
+}
+
 #game-board {
   display: grid;
   grid-template-columns: repeat(2, 150px);
@@ -7,6 +11,17 @@
 }
 
 #show-level {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Pokemon';
+  color: white;
+  font-size: 24px;
+  padding-top: 80px;
+  
+}
+
+#try-again {
   display: flex;
   justify-content: center;
   font-family: 'Pokemon';
