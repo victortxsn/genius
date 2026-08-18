@@ -17,13 +17,22 @@
   <audio id="yellow-sound" src="yellow.m4a"></audio>
   <audio id="mozart-song" src="./Mozart.m4a"></audio>
   <h1 id="title">Genius</h1>
-  <div id="game-board">
-    <div class="color" id="red"></div>
-    <div class="color" id="green"></div>
-    <div class="color" id="blue"></div>
-    <div class="color" id="yellow"></div>
+
+  <div id="game-container">
+    <div id="game-board">
+      <div class="color" id="red"></div>
+      <div class="color" id="green"></div>
+      <div class="color" id="blue"></div>
+      <div class="color" id="yellow"></div>
+    </div>
+
+    <div id="show-level">
+      <div><span id="level"></span></div>
+    </div>
   </div>
+
   <button id="start" onclick="enableLoop(); playSong('mozart-song') " type="button">START GAME</button>
   <script src="./script.js"></script>
+
 </body>
 </html>
