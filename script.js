@@ -1,4 +1,5 @@
 const colors = ["green", "red", "yellow", "blue"];
+const levelDisplay = document.getElementById("level");
 let gameSequence = [];
 let playerSequence = [];
 let level = 0;
@@ -6,17 +7,29 @@ let level = 0;
 const startButton = document.getElementById("start");
 
 function startGame() {
+
+  startButtonDisappear()
+
   gameSequence = [];
   playerSequence = [];
   level = 0;
+
+  levelDisplay.textContent = level;
+
   nextRound();
 }
 
 function nextRound() {
+
   playerSequence = [];
   level++;
+
+  levelDisplay.textContent = "Level: " + level;
+
   const randomColor = colors[Math.floor(Math.random() * 4)];
+
   gameSequence.push(randomColor);
+
   playSequence();
 }
 
@@ -92,4 +105,12 @@ function handleClick(color) {
   flashColor(color); // this already plays the sound
   checkMove(playerSequence.length - 1);
 }
+
+function startButtonDisappear(){
+  const button = document.getElementById("start");
+  button.style.display="none";
+
+}
+
+
 
