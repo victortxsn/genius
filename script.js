@@ -159,6 +159,8 @@ function checkMove(index) {
 
     restartGame();
 
+    playFailSound();
+
     return;
   }
 
@@ -269,6 +271,57 @@ function playColorSound(color) {
 
 }
 
+// =========================
+// SOM DO ERRO DO JOGADOR
+// =========================
+
+function playFailSound(color){
+
+  if(gameRunning){
+    return;
+  }
+
+  const failSound = document.getElementById("failSound");
+
+  failSound.currentTime = 0;
+
+  failSound
+    .play()
+    .catch(err => console.log("Fail sound play blocked", err));
+
+  failFlash();
+}
+
+// =========================
+// PISCA TUDO JUNTO(FAIL!)
+// =========================
+
+function failFlash(){
+
+  let flashes = 0;
+
+  function flash(){
+
+    colors.forEach(color => {
+      document.getElementById(color).classList.add("active");
+    });
+
+    setTimeout(() => {
+
+      colors.forEach(color => {
+        document.getElementById(color).classList.remove("active");
+      });
+
+      flashes++;
+
+      if(flashes < 2){
+        setTimeout(flash, 200);
+      }
+    }, 200);
+  }
+
+  flash();
+}
 
 // =========================
 // BOTÃO START
