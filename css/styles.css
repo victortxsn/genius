@@ -1,185 +1,360 @@
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
 
-#game-container{
-  align-content: center;
+* {
+  box-sizing: border-box;
 }
 
-#game-board {
-  display: grid;
-  grid-template-columns: repeat(2, 150px);
-  grid-template-rows: repeat(2, 150px);
-  gap: 10px;
+html {
+  min-height: 100%;
+  background: linear-gradient(
+    -45deg,
+    rgb(35, 35, 35),
+    rgb(0, 0, 0)
+  );
+
+  background-size: 400% 400%;
+  animation: gradient-animation 15s ease infinite;
+
+  font-family: 'Pokemon';
 }
 
-#show-level {
+body {
+  min-height: 100vh;
+  margin: 0;
+
   display: flex;
-  justify-content: center;
-  text-align: center;
-  font-family: 'Pokemon';
-  color: white;
-  font-size: 24px;
-  padding-top: 80px;
-  
-}
-
-#try-again {
-  display: flex;
-  justify-content: center;
-  font-family: 'Pokemon';
-  color: white;
-  font-size: 24px;
-  padding-top: 80px;
-  
-}
-
-.color {
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-#green { 
-  background: linear-gradient(-45deg, rgb(6, 255, 6), rgb(0, 0, 0));
-	background-size: 400% 400%;
-	animation: gradient-animation 15s ease infinite;
-}
-#red { 
-  background: linear-gradient(-45deg, rgb(253, 0, 0), rgb(0, 0, 0));
-	background-size: 400% 400%;
-	animation: gradient-animation 15s ease infinite; 
-}
-#yellow { 
-  background: linear-gradient(-45deg, rgb(217, 255, 0), rgb(0, 0, 0));
-	background-size: 400% 400%;
-	animation: gradient-animation 15s ease infinite;
-}
-#blue {
-  background: linear-gradient(-45deg, rgb(0, 81, 255), rgb(0, 0, 0));
-	background-size: 400% 400%;
-	animation: gradient-animation 15s ease infinite;
- }
-
-.active {
-  filter: brightness(2.0);
-}
-
-@font-face{
-    font-family: 'Pokemon';
-    src: url('../fonts/pokemon-font.ttf') format('truetype');
-}
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.icon-square {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.75rem;
-}
-
-.profile-img {
-  border-radius: 50%;
-    height: 100px;
-}
-
-h1{
-  font-family: 'Pokemon';
-  color: white;
-}
-
-html{
-  background: linear-gradient(-45deg, rgb(35, 35, 35), rgb(0, 0, 0));
-	background-size: 400% 400%;
-	animation: gradient-animation 15s ease infinite;
-  font-family: 'Pokemon';
-}
-
-body{
-  display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: center ;
-  gap: 160px;
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(35px, 7vh, 80px);
+
+  padding: 30px 20px;
 }
 
-#title{
-  margin-top: 70px;
-  margin-bottom: -70px;
-  color: #b5b5b5a4; /* Adjust this color to change intensity/style */
+
+/* =========================
+   FONTE
+========================= */
+
+@font-face {
+  font-family: 'Pokemon';
+  src: url('../fonts/pokemon-font.ttf') format('truetype');
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+h1 {
+  font-family: 'Pokemon';
+  color: white;
+}
+
+#title {
+  margin: 0;
+
+  font-size: clamp(45px, 7vw, 80px);
+
+  color: #b5b5b5a4;
+
   background: linear-gradient(
     120deg,
     rgba(255, 255, 255, 0) 40%,
     rgba(255, 255, 255, 0.8) 50%,
     rgba(255, 255, 255, 0) 60%
   );
+
   background-size: 200% 100%;
+
   -webkit-background-clip: text;
   background-clip: text;
+
   display: inline-block;
+
   animation: shine 5s linear infinite;
 }
 
-@keyframes shine {
-  0% {
-    background-position: 100%;
-  }
-  100% {
-    background-position: -100%;
-  }
+
+/* =========================
+   TABULEIRO + LEVEL
+========================= */
+
+#game-container {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: clamp(20px, 4vw, 60px);
 }
 
-.shiny-text.disabled {
-  animation: none;
+
+/* =========================
+   GAME BOARD
+========================= */
+
+#game-board {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  width: clamp(260px, 42vw, 500px);
+  aspect-ratio: 1 / 1;
+
+  gap: clamp(6px, 1vw, 12px);
 }
 
-#start{
+
+/* =========================
+   QUADRADOS
+========================= */
+
+.color {
   width: 100%;
   height: 100%;
-  font-family: 'Pokemon';
-  font-size: 20px;
-  background-color: white;
-  border: none;
-  width: 50vh;
-  height: 10vh;
-  margin-top: -90px;
-  background: #212121;
-  background-image: -webkit-linear-gradient(top,#212121, #000000);
-  background-image: -moz-linear-gradient(top, #212121, #000000);
-  background-image: -ms-linear-gradient(top, #212121, #000000);
-  background-image: -o-linear-gradient(top, #212121, #000000);
-  background-image: linear-gradient(to bottom, #212121, #212121);
-  -webkit-border-radius: 8;
-  -moz-border-radius: 8;
-  border-radius: 20px;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  width: 50vhpx;
 
+  border-radius: clamp(8px, 1.5vw, 18px);
+
+  cursor: pointer;
+
+  transition:
+    filter 0.1s ease,
+    transform 0.1s ease;
+}
+
+.color:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================
+   CORES
+========================= */
+
+#green {
+  background: linear-gradient(
+    -45deg,
+    rgb(6, 255, 6),
+    rgb(0, 0, 0)
+  );
+
+  background-size: 400% 400%;
+
+  animation: gradient-animation 15s ease infinite;
+}
+
+#red {
+  background: linear-gradient(
+    -45deg,
+    rgb(253, 0, 0),
+    rgb(0, 0, 0)
+  );
+
+  background-size: 400% 400%;
+
+  animation: gradient-animation 15s ease infinite;
+}
+
+#yellow {
+  background: linear-gradient(
+    -45deg,
+    rgb(217, 255, 0),
+    rgb(0, 0, 0)
+  );
+
+  background-size: 400% 400%;
+
+  animation: gradient-animation 15s ease infinite;
+}
+
+#blue {
+  background: linear-gradient(
+    -45deg,
+    rgb(0, 81, 255),
+    rgb(0, 0, 0)
+  );
+
+  background-size: 400% 400%;
+
+  animation: gradient-animation 15s ease infinite;
+}
+
+
+/* =========================
+   EFEITO QUANDO PISCA
+========================= */
+
+.active {
+  filter: brightness(2);
+}
+
+
+/* =========================
+   LEVEL
+========================= */
+
+#show-level {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  font-family: 'Pokemon';
+
+  font-size: clamp(18px, 3vw, 32px);
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   BOTÃO START
+========================= */
+
+#start {
+  width: clamp(220px, 35vw, 400px);
+  height: clamp(60px, 9vh, 100px);
+
+  margin: 0;
+
+  border: none;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    to bottom,
+    #212121,
+    #000000
+  );
+
+  color: #ffffff;
+
+  font-family: 'Pokemon';
+
+  font-size: clamp(16px, 2vw, 24px);
+
+  padding: 10px 20px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 #start:hover {
-  
   background: #000000;
-  background-image: -webkit-linear-gradient(top, #000000, #000000);
-  background-image: -moz-linear-gradient(top, #000000, #000000);
-  background-image: -ms-linear-gradient(top, #000000, #000000);
-  background-image: -o-linear-gradient(top, #000000, #000000);
-  background-image: linear-gradient(to bottom, #000000, #000000);
-  text-decoration: none;
+
+  transform: scale(1.03);
+
+  box-shadow:
+    0 0 15px rgba(255, 255, 255, 0.15);
 }
 
-@media (min-width:320px) and (max-width:425px){
-  html{
-    margin: 0 auto;
-    text-align: center;
+#start:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes gradient-animation {
+
+  0% {
+    background-position: 0% 50%;
   }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+
+}
+
+@keyframes shine {
+
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: -100%;
+  }
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+  body {
+    gap: 30px;
+
+    padding: 20px;
+  }
+
+  #title {
+    font-size: clamp(40px, 15vw, 65px);
+  }
+
+  #game-container {
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  #game-board {
+    width: min(85vw, 400px);
+  }
+
+  #show-level {
+    font-size: 22px;
+  }
+
+  #start {
+    width: min(80vw, 350px);
+
+    height: 70px;
+
+    font-size: 20px;
+  }
+
+}
+
+
+/* =========================
+   CELULARES MUITO PEQUENOS
+========================= */
+
+@media (max-width: 350px) {
+
+  body {
+    padding: 15px;
+  }
+
+  #game-board {
+    width: 90vw;
+  }
+
+  #start {
+    width: 90vw;
+  }
+
 }
