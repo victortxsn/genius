@@ -1,13 +1,25 @@
-/* =========================
-   CONFIGURAÇÕES GERAIS
-========================= */
-
 * {
   box-sizing: border-box;
 }
 
+
+/* =========================
+   FONTE
+========================= */
+
+@font-face {
+  font-family: 'Pokemon';
+  src: url('../fonts/pokemon-font.ttf') format('truetype');
+}
+
+
+/* =========================
+   HTML / BODY
+========================= */
+
 html {
   min-height: 100%;
+
   background: linear-gradient(
     -45deg,
     rgb(35, 35, 35),
@@ -26,22 +38,13 @@ body {
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   justify-content: center;
+  align-items: center;
 
   gap: clamp(35px, 7vh, 80px);
 
   padding: 30px 20px;
-}
-
-
-/* =========================
-   FONTE
-========================= */
-
-@font-face {
-  font-family: 'Pokemon';
-  src: url('../fonts/pokemon-font.ttf') format('truetype');
 }
 
 
@@ -80,18 +83,19 @@ h1 {
 
 
 /* =========================
-   TABULEIRO + LEVEL
+   GAME CONTAINER
 ========================= */
 
 #game-container {
   width: 100%;
 
   display: flex;
+  flex-direction: column;
 
   justify-content: center;
   align-items: center;
 
-  gap: clamp(20px, 4vw, 60px);
+  gap: 20px;
 }
 
 
@@ -106,6 +110,7 @@ h1 {
   grid-template-rows: repeat(2, 1fr);
 
   width: clamp(260px, 42vw, 500px);
+
   aspect-ratio: 1 / 1;
 
   gap: clamp(6px, 1vw, 12px);
@@ -188,7 +193,7 @@ h1 {
 
 
 /* =========================
-   EFEITO QUANDO PISCA
+   EFEITO DOS QUADRADOS
 ========================= */
 
 .active {
@@ -203,12 +208,14 @@ h1 {
 #show-level {
   display: flex;
 
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
-  color: white;
+  text-align: center;
 
   font-family: 'Pokemon';
+
+  color: white;
 
   font-size: clamp(18px, 3vw, 32px);
 
@@ -222,18 +229,16 @@ h1 {
 
 #start {
   width: clamp(220px, 35vw, 400px);
+
   height: clamp(60px, 9vh, 100px);
 
   margin: 0;
 
-  border: none;
+  border: 2px solid #ffffff;
+
   border-radius: 20px;
 
-  background: linear-gradient(
-    to bottom,
-    #212121,
-    #000000
-  );
+  background: transparent;
 
   color: #ffffff;
 
@@ -251,14 +256,24 @@ h1 {
     box-shadow 0.15s ease;
 }
 
+
+/* =========================
+   BOTÃO - HOVER
+========================= */
+
 #start:hover {
   background: #000000;
 
   transform: scale(1.03);
 
   box-shadow:
-    0 0 15px rgba(255, 255, 255, 0.15);
+    0 0 15px rgba(255, 255, 255, 0.25);
 }
+
+
+/* =========================
+   BOTÃO - CLIQUE
+========================= */
 
 #start:active {
   transform: scale(0.97);
@@ -266,7 +281,7 @@ h1 {
 
 
 /* =========================
-   ANIMAÇÕES
+   ANIMAÇÃO DOS GRADIENTES
 ========================= */
 
 @keyframes gradient-animation {
@@ -284,6 +299,11 @@ h1 {
   }
 
 }
+
+
+/* =========================
+   ANIMAÇÃO DO TÍTULO
+========================= */
 
 @keyframes shine {
 
@@ -312,12 +332,6 @@ h1 {
 
   #title {
     font-size: clamp(40px, 15vw, 65px);
-  }
-
-  #game-container {
-    flex-direction: column;
-
-    gap: 20px;
   }
 
   #game-board {
